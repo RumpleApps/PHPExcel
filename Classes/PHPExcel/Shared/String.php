@@ -488,8 +488,9 @@ class PHPExcel_Shared_String
     {
         if (self::getIsIconvEnabled()) {
             $icresult = iconv($from, $to, $value);
-            if(!$icresult){
-                return mb_convert_encoding($value, $to, $from);
+            if(!$icresult && function_exists('mb_detect_encoding')){
+                $real_encoding = mb_detect_encoding($value, "UTF-8,ISO-8859-1,WINDOWS-1252");
+                return iconv($real_encoding, $to, $value);
             }
             return $icresult;
         }
