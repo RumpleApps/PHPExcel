@@ -491,7 +491,7 @@ class PHPExcel_Shared_String
             if(!$icresult){
                 return mb_convert_encoding($value, $to, $from);
             }
-            return $icresult
+            return $icresult;
         }
 
         if (self::getIsMbstringEnabled()) {
