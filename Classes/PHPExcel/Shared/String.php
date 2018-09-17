@@ -489,7 +489,7 @@ class PHPExcel_Shared_String
         if (self::getIsIconvEnabled()) {
             $icresult = iconv($from, $to, $value);
             if(!$icresult){
-                mb_convert_encoding($value, $to, $from);
+                return mb_convert_encoding($value, $to, $from);
             }
             return $icresult
         }
